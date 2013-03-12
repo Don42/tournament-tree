@@ -3,9 +3,12 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+TARGET =
 DEPENDPATH += .
 INCLUDEPATH += .
 
 # Input
 SOURCES += main.cpp
+SOURCES += AddPlayerDialog.cpp
+
+HEADERS += AddPlayerDialog.h
