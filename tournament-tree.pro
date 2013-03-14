@@ -10,5 +10,7 @@ INCLUDEPATH += .
 # Input
 SOURCES += main.cpp
 SOURCES += AddPlayerDialog.cpp
+SOURCES += MainWindow.cpp
 
 HEADERS += AddPlayerDialog.h
+HEADERS += MainWindow.h
