@@ -2,6 +2,8 @@
 #define MAIN_WINDOW
 
 #include <QWidget>
+class QGroupBox;
+class QScrollArea;
 
 class MainWindow : public QWidget
 {
@@ -12,6 +14,9 @@ class MainWindow : public QWidget
 
     private:
         void setupPlayers ();
+        QGroupBox* hGroupBox;
+        QScrollArea* scrollArea;
+        QGroupBox* vGroupBox;
 };
 
 #endif
