@@ -5,6 +5,7 @@
 
 MainWindow::MainWindow ()
 {
+    setupScrollArea ();
     setupPlayers ();
 }
 
@@ -17,9 +18,8 @@ MainWindow::setupPlayers ()
     if (dialog.exec() == 1)
     {
         int playerCount = dialog.getPlayerCount ();
-        scrollArea = new QScrollArea;
-        scrollArea->setHorizontalScrollBarPolicy ( Qt::ScrollBarAlwaysOff );
-        scrollArea->setVerticalScrollBarPolicy ( Qt::ScrollBarAsNeeded);
+        playerNames = new QList <QLineEdit*>;
+
         QVBoxLayout* page = new QVBoxLayout;
         vGroupBox = new QGroupBox ("");
         for (int i = 0; i < playerCount; i++)
@@ -34,15 +34,26 @@ MainWindow::setupPlayers ()
     setLayout (mainLayout);
 }
 
+void
+MainWindow::setupScrollArea ()
+{
+        scrollArea = new QScrollArea;
+        scrollArea->setHorizontalScrollBarPolicy ( Qt::ScrollBarAlwaysOff );
+        scrollArea->setVerticalScrollBarPolicy ( Qt::ScrollBarAsNeeded);
+}
+
 QGroupBox*
 MainWindow::buildPlayerEntryFields (int playerNumber)
 {
-
     QGroupBox*  hGroupBox = new QGroupBox(tr("Horizontal layout"));
     QHBoxLayout* layout = new QHBoxLayout;
+
     QString string = QString ("Player %1").arg (playerNumber);
     layout->addWidget (new QLabel (string));
-    layout->addWidget (new QLineEdit);
+    QLineEdit* editLine = new QLineEdit;
+    layout->addWidget (editLine);
+    (*playerNames) << editLine;
+
     hGroupBox->setLayout (layout);
     return hGroupBox;
 }

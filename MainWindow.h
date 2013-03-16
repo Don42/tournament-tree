@@ -2,8 +2,10 @@
 #define MAIN_WINDOW
 
 #include <QWidget>
-class QGroupBox;
-class QScrollArea;
+#include <QList>
+#include <QGroupBox>
+#include <QScrollArea>
+#include <QLineEdit>
 
 class MainWindow : public QWidget
 {
@@ -15,6 +17,8 @@ class MainWindow : public QWidget
     private:
         void setupPlayers ();
         QGroupBox* buildPlayerEntryFields (int playerNumber);
+        void setupScrollArea ();
+        QList<QLineEdit *>* playerNames;
         QScrollArea* scrollArea;
         QGroupBox* vGroupBox;
 
