@@ -7,6 +7,8 @@
 #include <QScrollArea>
 #include <QLineEdit>
 
+#include "Game.h"
+
 class MainWindow : public QWidget
 {
     Q_OBJECT
@@ -21,6 +23,7 @@ class MainWindow : public QWidget
         QList<QLineEdit *>* playerNames;
         QScrollArea* scrollArea;
         QGroupBox* vGroupBox;
+        Game game;
 
 };
 

@@ -11,6 +11,8 @@ INCLUDEPATH += .
 SOURCES += main.cpp
 SOURCES += AddPlayerDialog.cpp
 SOURCES += MainWindow.cpp
+SOURCES += Game.h
 
 HEADERS += AddPlayerDialog.h
 HEADERS += MainWindow.h
+HEADERS *= Game.h
