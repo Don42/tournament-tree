@@ -15,14 +15,9 @@ class MainWindow : public QWidget
 
     public:
         MainWindow ();
+        ~MainWindow (){};
 
     private:
-        void setupPlayers ();
-        QGroupBox* buildPlayerEntryFields (int playerNumber);
-        void setupScrollArea ();
-        QList<QLineEdit *>* playerNames;
-        QScrollArea* scrollArea;
-        QGroupBox* vGroupBox;
         Game game;
 
 };
