@@ -3,7 +3,8 @@
 
 #include "AddPlayerDialog.h"
 
-AddPlayerDialog::AddPlayerDialog ()
+AddPlayerDialog::AddPlayerDialog (QWidget* parent)
+    : QDialog (parent)
 {
     QIntValidator validator;
     validator.setBottom (3);

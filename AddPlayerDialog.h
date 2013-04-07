@@ -9,7 +9,7 @@ class AddPlayerDialog : public QDialog
     Q_OBJECT
 
     public:
-        AddPlayerDialog ();
+        AddPlayerDialog (QWidget* parent = NULL);
         int getPlayerCount ();
 
     private:

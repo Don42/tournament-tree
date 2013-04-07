@@ -13,8 +13,8 @@ class EnterPlayerNamesDialog : public QDialog
     Q_OBJECT
 
     public:
-        EnterPlayerNamesDialog (const int playerCount = 2);
-        ~EnterPlayerNamesDialog ();
+        EnterPlayerNamesDialog (const int playerCount,
+                QWidget* parent = NULL);
 
     private:
         QWidget* buildPlayerEntryField (const int playerNumber);

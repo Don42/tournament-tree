@@ -4,19 +4,19 @@
 
 #include "EnterPlayerNamesDialog.h"
 
-EnterPlayerNamesDialog::EnterPlayerNamesDialog (const int playerCount)
+EnterPlayerNamesDialog::EnterPlayerNamesDialog (const int playerCount,
+        QWidget* parent) : QDialog (parent)
 {
-    assert (playerCount > 2);
+    assert (playerCount >= 2);
 
     playerNames = new QList<QLineEdit*>;
-
     scrollArea = new QScrollArea;
-    scrollArea->setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
-    scrollArea->setVerticalScrollBarPolicy (Qt::ScrollBarAsNeeded);
-
     mainLayout = new QVBoxLayout;
     page = new QVBoxLayout;
     vGroupBox = new QGroupBox;
+
+    scrollArea->setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
+    scrollArea->setVerticalScrollBarPolicy (Qt::ScrollBarAsNeeded);
 
     for (int i = 1; i <= playerCount; ++i)
     {
@@ -26,16 +26,6 @@ EnterPlayerNamesDialog::EnterPlayerNamesDialog (const int playerCount)
     scrollArea->setWidget (vGroupBox);
     mainLayout->addWidget (scrollArea);
     setLayout (mainLayout);
-}
-
-EnterPlayerNamesDialog::~EnterPlayerNamesDialog ()
-{
-    delete mainLayout;
-    delete page;
-    delete vGroupBox;
-    delete scrollArea;
-    qDeleteAll (*playerNames);
-    delete playerNames;
 }
 
 QWidget*
