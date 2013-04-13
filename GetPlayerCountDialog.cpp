@@ -1,9 +1,9 @@
 #include <QtGui>
 #include <QIntValidator>
 
-#include "AddPlayerDialog.h"
+#include "GetPlayerCountDialog.h"
 
-AddPlayerDialog::AddPlayerDialog (QWidget* parent)
+GetPlayerCountDialog::GetPlayerCountDialog (QWidget* parent)
     : QDialog (parent)
 {
     QIntValidator validator;
@@ -28,7 +28,7 @@ AddPlayerDialog::AddPlayerDialog (QWidget* parent)
 }
 
 int
-AddPlayerDialog::getPlayerCount ()
+GetPlayerCountDialog::getPlayerCount ()
 {
     return lineEdit->text().toInt();
 }

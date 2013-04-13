@@ -1,5 +1,5 @@
-#ifndef ENTER_PLAYER_NAMES_DIALOG
-#define ENTER_PLAYER_NAMES_DIALOG
+#ifndef GET_PLAYER_NAMES_DIALOG
+#define GET_PLAYER_NAMES_DIALOG
 
 #include <QDialog>
 #include <QLineEdit>
@@ -8,12 +8,12 @@
 #include <QGroupBox>
 #include <QWidget>
 
-class EnterPlayerNamesDialog : public QDialog
+class GetPlayerNamesDialog : public QDialog
 {
     Q_OBJECT
 
     public:
-        EnterPlayerNamesDialog (const int playerCount,
+        GetPlayerNamesDialog (const int playerCount,
                 QWidget* parent = NULL);
 
     private:

@@ -2,9 +2,9 @@
 #include <QtAlgorithms>
 #include <assert.h>
 
-#include "EnterPlayerNamesDialog.h"
+#include "GetPlayerNamesDialog.h"
 
-EnterPlayerNamesDialog::EnterPlayerNamesDialog (const int playerCount,
+GetPlayerNamesDialog::GetPlayerNamesDialog (const int playerCount,
         QWidget* parent) : QDialog (parent)
 {
     assert (playerCount >= 2);
@@ -29,7 +29,7 @@ EnterPlayerNamesDialog::EnterPlayerNamesDialog (const int playerCount,
 }
 
 QWidget*
-EnterPlayerNamesDialog::buildPlayerEntryField (const int playerNumber)
+GetPlayerNamesDialog::buildPlayerEntryField (const int playerNumber)
 {
     QString string = QString ("Player %1").arg (playerNumber);
     QLineEdit* editLine = new QLineEdit (string);

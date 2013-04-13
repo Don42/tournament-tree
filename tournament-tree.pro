@@ -9,12 +9,12 @@ INCLUDEPATH += .
 
 # Input
 SOURCES += main.cpp
-SOURCES += AddPlayerDialog.cpp
+SOURCES += GetPlayerCountDialog.cpp
 SOURCES += MainWindow.cpp
-SOURCES += EnterPlayerNamesDialog.cpp
+SOURCES += GetPlayerNamesDialog.cpp
 #SOURCES += Game.cpp
 
-HEADERS += AddPlayerDialog.h
+HEADERS += GetPlayerCountDialog.h
 HEADERS += MainWindow.h
-HEADERS += EnterPlayerNamesDialog.h
+HEADERS += GetPlayerNamesDialog.h
 HEADERS *= Game.h
