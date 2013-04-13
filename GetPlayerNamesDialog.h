@@ -15,6 +15,7 @@ class GetPlayerNamesDialog : public QDialog
     public:
         GetPlayerNamesDialog (const int playerCount,
                 QWidget* parent = NULL);
+        QList<QString> getPlayerNames ();
 
     private:
         QWidget* buildPlayerEntryField (const int playerNumber);
@@ -23,6 +24,7 @@ class GetPlayerNamesDialog : public QDialog
         QVBoxLayout* mainLayout;
         QVBoxLayout* page;
         QGroupBox* vGroupBox;
+        QPushButton* okButton;
 };
 
 #endif

@@ -14,6 +14,8 @@ GetPlayerNamesDialog::GetPlayerNamesDialog (const int playerCount,
     mainLayout = new QVBoxLayout;
     page = new QVBoxLayout;
     vGroupBox = new QGroupBox;
+    okButton = new QPushButton( "OK", NULL);
+    okButton->setAutoDefault (true);
 
     scrollArea->setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
     scrollArea->setVerticalScrollBarPolicy (Qt::ScrollBarAsNeeded);
@@ -25,7 +27,23 @@ GetPlayerNamesDialog::GetPlayerNamesDialog (const int playerCount,
     vGroupBox->setLayout (page);
     scrollArea->setWidget (vGroupBox);
     mainLayout->addWidget (scrollArea);
+    mainLayout->addWidget (okButton);
     setLayout (mainLayout);
+
+    connect (okButton, SIGNAL (clicked ()), this, SLOT (accept ()));
+}
+
+
+QList<QString>
+GetPlayerNamesDialog::getPlayerNames ()
+{
+    QList<QString> names;
+    for (QList<QLineEdit*>::iterator i = playerNames->begin();
+            i != playerNames->end(); ++i)
+    {
+        names << (*i)->text ();
+    }
+    return names;
 }
 
 QWidget*

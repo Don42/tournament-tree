@@ -1,17 +1,20 @@
 #include <QtGui>
+#include <QDebug>
 
-#include "AddPlayerDialog.h"
-#include "EnterPlayerNamesDialog.h"
+#include "GetPlayerCountDialog.h"
+#include "GetPlayerNamesDialog.h"
 #include "MainWindow.h"
 
 MainWindow::MainWindow ()
 {
-    AddPlayerDialog countDialog;
+    GetPlayerCountDialog countDialog;
 
     if (countDialog.exec () == 1)
     {
         const int playerCount = countDialog.getPlayerCount ();
-        EnterPlayerNamesDialog namesDialog (playerCount);
+        GetPlayerNamesDialog namesDialog (playerCount);
         namesDialog.exec ();
+        QList<QString> names = namesDialog.getPlayerNames ();
+        qDebug () << names;
     }
 }
