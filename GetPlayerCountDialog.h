@@ -1,15 +1,15 @@
-#ifndef ADD_PLAYER_DIALOG
-#define ADD_PLAYER_DIALOG
+#ifndef GET_PLAYER_COUNT_DIALOG
+#define GET_PLAYER_COUNT_DIALOG
 
 #include <QDialog>
 #include <QLineEdit>
 
-class AddPlayerDialog : public QDialog
+class GetPlayerCountDialog : public QDialog
 {
     Q_OBJECT
 
     public:
-        AddPlayerDialog (QWidget* parent = NULL);
+        GetPlayerCountDialog (QWidget* parent = NULL);
         int getPlayerCount ();
 
     private:
