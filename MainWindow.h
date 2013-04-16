@@ -1,7 +1,7 @@
 #ifndef MAIN_WINDOW
 #define MAIN_WINDOW
 
-#include <QWidget>
+#include <QMainWindow>
 #include <QList>
 #include <QGroupBox>
 #include <QScrollArea>
@@ -9,7 +9,7 @@
 
 #include "Game.h"
 
-class MainWindow : public QWidget
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -17,8 +17,12 @@ class MainWindow : public QWidget
         MainWindow ();
         ~MainWindow (){};
 
+    public slots:
+        void createGame ();
+
     private:
         Game game;
+        void setupMenuBar ();
 
 };
 

@@ -5,7 +5,25 @@
 #include "GetPlayerNamesDialog.h"
 #include "MainWindow.h"
 
-MainWindow::MainWindow ()
+MainWindow::MainWindow () : QMainWindow ()
+{
+    setupMenuBar ();
+}
+
+void
+MainWindow::setupMenuBar ()
+{
+    QMenu *menu = menuBar()->addMenu(tr("&Main"));
+
+    QAction *action = menu->addAction(tr("&Create Game"));
+    connect(action, SIGNAL(triggered()), this, SLOT(createGame()));
+
+    menu->addAction(tr("&Quit"), this, SLOT(close()));
+
+}
+
+void
+MainWindow::createGame ()
 {
     GetPlayerCountDialog countDialog;
 
