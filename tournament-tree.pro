@@ -3,7 +3,8 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET =
+TARGET = tournament-tree
+CONFIG += debug
 DEPENDPATH += .
 INCLUDEPATH += .
 
@@ -12,9 +13,11 @@ SOURCES += main.cpp
 SOURCES += GetPlayerCountDialog.cpp
 SOURCES += MainWindow.cpp
 SOURCES += GetPlayerNamesDialog.cpp
+SOURCES += Node.cpp
 #SOURCES += Game.cpp
 
 HEADERS += GetPlayerCountDialog.h
 HEADERS += MainWindow.h
 HEADERS += GetPlayerNamesDialog.h
-HEADERS *= Game.h
+HEADERS += Node.h
+HEADERS += Game.h

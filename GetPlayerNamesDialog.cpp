@@ -34,14 +34,14 @@ GetPlayerNamesDialog::GetPlayerNamesDialog (const int playerCount,
 }
 
 
-QList<QString>
+std::auto_ptr< QList<QString> >
 GetPlayerNamesDialog::getPlayerNames ()
 {
-    QList<QString> names;
+    std::auto_ptr< QList<QString> > names ( new QList<QString>());
     for (QList<QLineEdit*>::iterator i = playerNames->begin();
             i != playerNames->end(); ++i)
     {
-        names << (*i)->text ();
+        names->append((*i)->text ());
     }
     return names;
 }

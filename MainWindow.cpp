@@ -4,6 +4,8 @@
 #include "GetPlayerCountDialog.h"
 #include "GetPlayerNamesDialog.h"
 #include "MainWindow.h"
+#include <memory>
+#include "Node.h"
 
 MainWindow::MainWindow () : QMainWindow ()
 {
@@ -32,7 +34,9 @@ MainWindow::createGame ()
         const int playerCount = countDialog.getPlayerCount ();
         GetPlayerNamesDialog namesDialog (playerCount);
         namesDialog.exec ();
-        QList<QString> names = namesDialog.getPlayerNames ();
-        qDebug () << names;
+        std::auto_ptr< QList<QString> > names = namesDialog.getPlayerNames ();
+        qDebug () << *names;
+        std::auto_ptr<Node> tree (buildTree (names));
+        qDebug () << "Tree created";
     }
 }
