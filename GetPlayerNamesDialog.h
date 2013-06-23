@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include <QGroupBox>
 #include <QWidget>
+#include <memory>
 
 class GetPlayerNamesDialog : public QDialog
 {
@@ -15,7 +16,7 @@ class GetPlayerNamesDialog : public QDialog
     public:
         GetPlayerNamesDialog (const int playerCount,
                 QWidget* parent = NULL);
-        QList<QString> getPlayerNames ();
+        std::auto_ptr< QList<QString> > getPlayerNames ();
 
     private:
         QWidget* buildPlayerEntryField (const int playerNumber);
