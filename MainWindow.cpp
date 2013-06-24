@@ -38,5 +38,6 @@ MainWindow::createGame ()
         qDebug () << *names;
         std::auto_ptr<Node> tree (buildTree (names));
         qDebug () << "Tree created";
+        printTree(const_cast<Node*>(tree.get()), QString(""));
     }
 }
