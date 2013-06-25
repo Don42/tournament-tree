@@ -14,7 +14,7 @@ SOURCES += GetPlayerCountDialog.cpp
 SOURCES += MainWindow.cpp
 SOURCES += GetPlayerNamesDialog.cpp
 SOURCES += Node.cpp
-#SOURCES += Game.cpp
+SOURCES += Game.cpp
 
 HEADERS += GetPlayerCountDialog.h
 HEADERS += MainWindow.h

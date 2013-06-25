@@ -12,6 +12,14 @@ MainWindow::MainWindow () : QMainWindow ()
     setupMenuBar ();
 }
 
+MainWindow::~MainWindow ()
+{
+    if(mGame)
+    {
+        delete mGame;
+    }
+}
+
 void
 MainWindow::setupMenuBar ()
 {
@@ -39,5 +47,6 @@ MainWindow::createGame ()
         std::auto_ptr<Node> tree (buildTree (names));
         qDebug () << "Tree created";
         printTree(const_cast<Node*>(tree.get()), QString(""));
+        mGame = new Game (tree.release());
     }
 }

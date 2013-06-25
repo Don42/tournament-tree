@@ -6,6 +6,7 @@
 #include <QGroupBox>
 #include <QScrollArea>
 #include <QLineEdit>
+#include <memory>
 
 #include "Game.h"
 
@@ -15,13 +16,13 @@ class MainWindow : public QMainWindow
 
     public:
         MainWindow ();
-        ~MainWindow (){};
+        ~MainWindow ();
 
     public slots:
         void createGame ();
 
     private:
-        Game game;
+        Game* mGame;
         void setupMenuBar ();
 
 };

@@ -3,15 +3,25 @@
 
 #include <QList>
 #include <QString>
+#include "Node.h"
 
 class Game
 {
+    public: enum GameType
+    {
+        ElimWithLoserBracket,
+        ElimWitoutLoserBracket
+    };
 
     public:
-        void addPlayer (QString name);
+        Game (Node* playerTree, GameType type);
+        Game (Node* playerTree);
+        ~Game ();
 
     private:
-        QList<QString>* playerNames;
+        void init (Node* playerTree, GameType type);
+        Node* mPlayerTree;
+        GameType mGameType;
 };
 
 #endif

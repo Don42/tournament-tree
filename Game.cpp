@@ -1,14 +1,23 @@
 #include "Game.h"
 
 
-Game::Game ()
+Game::Game (Node* playerTree)
 {
-    playerNames = new QList<QString>;
+    this->init(playerTree, ElimWithLoserBracket);
 }
 
-
-void
-Game::addPlayer (QString name)
+Game::Game (Node* playerTree, GameType type)
 {
-    playerNames << name;
+    this->init(playerTree, type);
+}
+
+void Game::init (Node* playerTree, GameType type)
+{
+    mPlayerTree = playerTree;
+    mGameType = type;
+}
+
+Game::~Game ()
+{
+    delete mPlayerTree;
 }
