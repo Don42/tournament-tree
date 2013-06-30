@@ -7,9 +7,12 @@
 #include <memory>
 #include "Node.h"
 
-MainWindow::MainWindow () : QMainWindow ()
+MainWindow::MainWindow ()
+: QMainWindow (),
+    mView (&mScene, this)
 {
     setupMenuBar ();
+    mView.resize (0,0);
 }
 
 MainWindow::~MainWindow ()
@@ -43,10 +46,29 @@ MainWindow::createGame ()
         GetPlayerNamesDialog namesDialog (playerCount);
         namesDialog.exec ();
         std::auto_ptr< QList<QString> > names = namesDialog.getPlayerNames ();
-        qDebug () << *names;
         std::auto_ptr<Node> tree (buildTree (names));
         qDebug () << "Tree created";
         printTree(const_cast<Node*>(tree.get()), QString(""));
         mGame = new Game (tree.release());
+        resetScene ();
+        mGame->show (&mScene, &mView);
+        mView.resize (this->size ());
     }
+}
+
+void MainWindow::resizeEvent (QResizeEvent* event)
+{
+    if(event)
+    {
+        mView.resize (this->size ());
+    }
+}
+
+void MainWindow::resetScene ()
+{
+    mScene.clear ();
+    qDeleteAll (mScene.items ());
+    qDeleteAll (mView.items ());
+    mView.resize(this->size ());
+    mView.setSceneRect (mScene.itemsBoundingRect ());
 }

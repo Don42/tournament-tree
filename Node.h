@@ -4,6 +4,9 @@
 #include <memory>
 #include <QString>
 #include <QList>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QProcess>
 
 class Node
 {
@@ -11,9 +14,10 @@ class Node
         Node (QString);
         Node (Node*, Node*);
         ~Node ();
-        Node* getLeft() const;
-        Node* getRight() const;
-        QString getName() const;
+        Node* getLeft () const;
+        Node* getRight () const;
+        QString getName () const;
+        void show (QGraphicsScene* scene, QGraphicsView* view) const;
     private:
         Node* mLeft;
         Node* mRight;

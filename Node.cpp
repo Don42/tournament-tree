@@ -1,5 +1,8 @@
 #include <stdlib.h>
+#include <iostream>
 #include <QDebug>
+#include <QByteArray>
+#include <QTextStream>
 #include "Node.h"
 
 Node::Node (QString name)
@@ -45,6 +48,92 @@ QString Node::getName () const
 }
 
 
+void graphWalk (const Node* p, QTextStream* stream, int* emptyNodeCounter)
+{
+    if (p != NULL)
+    {
+        QString name (p->getName ());
+        if (name.isEmpty())
+        {
+            name.setNum (*emptyNodeCounter);
+            ++(*emptyNodeCounter);
+        }
+        *stream << "\t\t" << "n" << name <<
+            "[label=\"" << name << "\"];" << "\n";
+
+        if (p->getLeft () != NULL)
+        {
+            QString leftName (p->getLeft ()->getName ());
+            if (leftName.isEmpty())
+            {
+                leftName.setNum (*emptyNodeCounter);
+            }
+            *stream << "\t\tn" << name << "--" << "n" <<
+                leftName << ";" << "\n";
+            graphWalk (p->getLeft (), stream, emptyNodeCounter);
+        }
+
+        if (p->getRight () != NULL)
+        {
+            QString rightName (p->getRight ()->getName ());
+            if (rightName.isEmpty())
+            {
+                rightName.setNum (*emptyNodeCounter);
+            }
+            *stream << "\t\tn" << name << "--" << "n" <<
+                rightName << ";" << "\n";
+            graphWalk (p->getRight (), stream, emptyNodeCounter);
+        }
+    }
+}
+
+
+QByteArray prepareGraph (const Node* node)
+{
+    QByteArray a = QByteArray ();
+
+    QTextStream stream (&a, QIODevice::ReadWrite);
+    stream << "graph ""{" << "\n";
+    stream << "\tnode[fontsize=10,margin=0,width=\".4\",height=\".3\"];" << "\n";
+    stream << "\tsubgraph cluster17{" << "\n";
+
+    int counter = 0;
+    graphWalk (node, &stream, &counter);
+
+    stream << "\t}\n" << "}" << "\n";
+    stream.flush ();
+
+    return a;
+}
+
+
+void Node::show (QGraphicsScene* scene, QGraphicsView* view) const
+{
+    QProcess* p = new QProcess;
+    QByteArray a = prepareGraph (this);
+
+    qDebug () << a;
+
+    p->setProcessChannelMode (QProcess::MergedChannels);
+    p->start ("dot", QStringList () << "-Tpng");
+    p->write (a);
+
+    QByteArray data;
+    QPixmap pixmap = QPixmap ();
+
+    while (p->waitForReadyRead(100))
+    {
+        data.append (p->readAll());
+    }
+
+    qDebug () << data;
+    pixmap.loadFromData (data);
+
+    scene->addPixmap (pixmap);
+    view->show ();
+}
+
+
 Node* buildTree (std::auto_ptr< QList<QString> > list)
 {
     if (list->size() == 1)
@@ -82,3 +171,4 @@ void printTree (const Node* node, QString indent)
         printTree(node->getRight(), newIndent);
     }
 }
+

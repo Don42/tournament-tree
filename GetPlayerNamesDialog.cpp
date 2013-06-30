@@ -49,7 +49,7 @@ GetPlayerNamesDialog::getPlayerNames ()
 QWidget*
 GetPlayerNamesDialog::buildPlayerEntryField (const int playerNumber)
 {
-    QString string = QString ("Player %1").arg (playerNumber);
+    QString string = QString ("Player_%1").arg (playerNumber);
     QLineEdit* editLine = new QLineEdit (string);
     (*playerNames) << editLine;
 

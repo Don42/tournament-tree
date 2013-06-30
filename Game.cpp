@@ -17,6 +17,11 @@ void Game::init (Node* playerTree, GameType type)
     mGameType = type;
 }
 
+void Game::show (QGraphicsScene* scene, QGraphicsView* view) const
+{
+    mPlayerTree->show (scene, view);
+}
+
 Game::~Game ()
 {
     delete mPlayerTree;

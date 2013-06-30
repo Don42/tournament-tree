@@ -16,6 +16,7 @@ class Game
     public:
         Game (Node* playerTree, GameType type);
         Game (Node* playerTree);
+        void show (QGraphicsScene* scene, QGraphicsView* view) const;
         ~Game ();
 
     private:
