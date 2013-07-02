@@ -8,6 +8,7 @@
 #include <QLineEdit>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QtGui>
 #include <memory>
 
 #include "Game.h"
@@ -28,6 +29,7 @@ class MainWindow : public QMainWindow
         Game* mGame = 0;
         QGraphicsScene mScene;
         QGraphicsView mView;
+        QShortcut* mQuit = 0;
         void setupMenuBar ();
         void resetScene ();
 

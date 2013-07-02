@@ -21,6 +21,10 @@ MainWindow::~MainWindow ()
     {
         delete mGame;
     }
+    if(mQuit)
+    {
+        delete mQuit;
+    }
 }
 
 void
@@ -30,9 +34,9 @@ MainWindow::setupMenuBar ()
 
     QAction *action = menu->addAction(tr("&Create Game"));
     connect(action, SIGNAL(triggered()), this, SLOT(createGame()));
-
     menu->addAction(tr("&Quit"), this, SLOT(close()));
 
+    mQuit = new QShortcut(Qt::CTRL + Qt::Key_Q, this, SLOT(close()));
 }
 
 void
