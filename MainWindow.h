@@ -25,7 +25,7 @@ class MainWindow : public QMainWindow
         void createGame ();
 
     private:
-        Game* mGame;
+        Game* mGame = 0;
         QGraphicsScene mScene;
         QGraphicsView mView;
         void setupMenuBar ();

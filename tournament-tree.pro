@@ -7,6 +7,7 @@ TARGET = tournament-tree
 CONFIG += debug
 DEPENDPATH += .
 INCLUDEPATH += .
+QMAKE_CXXFLAGS *= -std=gnu++11
 
 # Input
 SOURCES += main.cpp

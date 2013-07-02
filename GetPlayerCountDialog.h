@@ -13,8 +13,8 @@ class GetPlayerCountDialog : public QDialog
         int getPlayerCount ();
 
     private:
-        QLineEdit *lineEdit;
-        QPushButton *pushButton;
+        QLineEdit *lineEdit = 0;
+        QPushButton *pushButton = 0;
 
 };
 

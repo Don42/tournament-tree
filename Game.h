@@ -21,7 +21,7 @@ class Game
 
     private:
         void init (Node* playerTree, GameType type);
-        Node* mPlayerTree;
+        Node* mPlayerTree = 0;
         GameType mGameType;
 };
 

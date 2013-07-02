@@ -19,8 +19,8 @@ class Node
         QString getName () const;
         void show (QGraphicsScene* scene, QGraphicsView* view) const;
     private:
-        Node* mLeft;
-        Node* mRight;
+        Node* mLeft = 0;
+        Node* mRight = 0;
         QString mName;
 };
 
