@@ -24,9 +24,4 @@ class Node
         QString mName;
 };
 
-Node* buildTree (std::auto_ptr< QList<QString> > list);
-int randInt (int low, int high);
-
-void printTree (const Node* node, QString indent);
-
 #endif

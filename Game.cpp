@@ -1,19 +1,19 @@
 #include "Game.h"
 
 
-Game::Game (Node* playerTree)
+Game::Game (std::unique_ptr< QList<QString> > names)
 {
-    this->init(playerTree, ElimWithLoserBracket);
+    this->init(std::move(names), ElimWithLoserBracket);
 }
 
-Game::Game (Node* playerTree, GameType type)
+Game::Game (std::unique_ptr< QList<QString> > names, GameType type)
 {
-    this->init(playerTree, type);
+    this->init(std::move(names), type);
 }
 
-void Game::init (Node* playerTree, GameType type)
+void Game::init (std::unique_ptr< QList<QString> > names, GameType type)
 {
-    mPlayerTree = playerTree;
+    mPlayerTree = new Tree (std::move (names));
     mGameType = type;
 }
 
@@ -24,5 +24,8 @@ void Game::show (QGraphicsScene* scene, QGraphicsView* view) const
 
 Game::~Game ()
 {
-    delete mPlayerTree;
+    if (mPlayerTree)
+    {
+        delete mPlayerTree;
+    }
 }

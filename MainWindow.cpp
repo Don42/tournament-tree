@@ -49,11 +49,7 @@ MainWindow::createGame ()
         const int playerCount = countDialog.getPlayerCount ();
         GetPlayerNamesDialog namesDialog (playerCount);
         namesDialog.exec ();
-        std::auto_ptr< QList<QString> > names = namesDialog.getPlayerNames ();
-        std::auto_ptr<Node> tree (buildTree (names));
-        qDebug () << "Tree created";
-        printTree(const_cast<Node*>(tree.get()), QString(""));
-        mGame = new Game (tree.release());
+        mGame = new Game (std::move (namesDialog.getPlayerNames ()));
         resetScene ();
         mGame->show (&mScene, &mView);
         mView.resize (this->size ());

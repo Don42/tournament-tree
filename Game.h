@@ -4,6 +4,7 @@
 #include <QList>
 #include <QString>
 #include "Node.h"
+#include "Tree.h"
 
 class Game
 {
@@ -14,14 +15,14 @@ class Game
     };
 
     public:
-        Game (Node* playerTree, GameType type);
-        Game (Node* playerTree);
+        Game (std::unique_ptr< QList<QString> > names, GameType type);
+        Game (std::unique_ptr< QList<QString> > names);
         void show (QGraphicsScene* scene, QGraphicsView* view) const;
         ~Game ();
 
     private:
-        void init (Node* playerTree, GameType type);
-        Node* mPlayerTree = 0;
+        void init (std::unique_ptr< QList<QString> > names, GameType type);
+        Tree* mPlayerTree = 0;
         GameType mGameType;
 };
 

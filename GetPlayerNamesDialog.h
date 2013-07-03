@@ -16,7 +16,7 @@ class GetPlayerNamesDialog : public QDialog
     public:
         GetPlayerNamesDialog (const int playerCount,
                 QWidget* parent = NULL);
-        std::auto_ptr< QList<QString> > getPlayerNames ();
+        std::unique_ptr< QList<QString> > getPlayerNames ();
 
     private:
         QWidget* buildPlayerEntryField (const int playerNumber);
