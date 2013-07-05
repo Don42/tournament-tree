@@ -17,10 +17,16 @@ class Node
         Node* getLeft () const;
         Node* getRight () const;
         QString getName () const;
+        Node** getLoserDestination () const;
+        Node* getWinner () const;
+        void setWinner (Node* winner);
+        void setLoserDestination (Node** dest);
         void show (QGraphicsScene* scene, QGraphicsView* view) const;
     private:
         Node* mLeft = 0;
         Node* mRight = 0;
+        Node** mLoserDestination = 0;
+        Node* mWinner = 0;
         QString mName;
 };
 

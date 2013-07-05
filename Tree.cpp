@@ -126,7 +126,6 @@ void Tree::show (QGraphicsScene* scene, QGraphicsView* view) const
         data.append (p->readAll());
     }
 
-    qDebug () << data;
     pixmap.loadFromData (data);
 
     scene->addPixmap (pixmap);

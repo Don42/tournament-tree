@@ -46,3 +46,23 @@ QString Node::getName () const
 {
     return mName;
 }
+
+Node** Node::getLoserDestination () const
+{
+    return mLoserDestination;
+}
+
+void Node::setLoserDestination (Node** dest)
+{
+    mLoserDestination = dest;
+}
+
+Node* Node::getWinner () const
+{
+    return mWinner;
+}
+
+void Node::setWinner (Node* winner)
+{
+    mWinner = winner;
+}
